@@ -1,0 +1,66 @@
+# spring.application.name=mapstruct
+server:
+  port: 8080
+#   servlet:
+#     context-path: ${CONTEXT_PATH}
+#     session:
+#       cookie:
+#         http-only: true
+#       tracking-modes:
+#         - cookie
+#     # <============================> Thay đổi chạy dưới local .  <============================>
+#     # error:
+#     #   include-stacktrace: never
+#     # <============================> Thay đổi chạy dưới local .  <============================>
+
+
+
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://${DB_HOST}:${DB_PORT}/${DB_DATABASE}?serverTimezone=UTC&amp;createDatabaseIfNotExist=true&amp;characterEncoding=UTF-8
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    hikari:
+      poolName: ${APP_NAME}-pool
+      auto-commit: true
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: deferred
+    web:
+      pageable:
+        one-indexed-parameters:  true
+        page-parameter: page
+        size-parameter: limit
+  jpa:
+    open-in-view: false
+    # <============================> Thay đổi chạy dưới local .  <============================>
+    # show-sql: false
+    show-sql: true
+    # <============================> Thay đổi chạy dưới local .  <============================>
+
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MariaDBDialect
+      hibernate.jdbc.time_zone: UTC
+      hibernate.proc.param_null_passing: true
+      hibernate.id.new_generator_mappings: true
+      hibernate.connection.provider_disables_autocommit: true
+      hibernate.generate_statistics: false
+      #hibernate.cache.use_second_level_cache: true
+      #hibernate.cache.use_query_cache: true
+      #hibernate.cache.region.factory_class: org.hibernate.cache.ehcache.EhCacheRegionFactory
+      #hibernate.search.backend.directory.root: ${HOME}/project-data/noichinh-index
+      #hibernate.search.enabled: FALSE
+    hibernate:
+      ddl-auto: update
+      # naming:
+      #   physical-strategy: vn.tcx.gfw.admin.infrastructure.PascalCasePhysicalNamingStrategy
+      #naming:
+      #  implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+

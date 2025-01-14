@@ -1,12 +1,8 @@
 package com.example.oauth02.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.example.oauth02.util.ERole;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;

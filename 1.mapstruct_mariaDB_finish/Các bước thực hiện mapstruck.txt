@@ -1,0 +1,39 @@
+ 1. Thêm dependency 
+
+<dependency>
+	<groupId>org.mapstruct</groupId>
+	<artifactId>mapstruct</artifactId>
+	<version>1.6.3</version>   
+	<!-- <version>1.3.0.Final</version> -->
+</dependency>
+
+
+================================================================================================================
+
+
+2. Ở mục annotationProcessorPaths 
+
+thêm vào : 
+
+ <path>
+	<groupId>org.mapstruct</groupId>
+	<artifactId>mapstruct-processor</artifactId>
+	<version>1.3.0.Final</version>
+</path>
+
+================================================================================================================
+
+3. Tạo DTO.
+4. Tạo interface : 
+	4.a.(componentModel = "spring") . Nó có 3 giá trị là default, spring , cdi. 
+				a.1 : default : là tự tạo tự quản lý. 
+				a.2 : spring  : là spring sẽ tự tạo spring quản lý. 
+				a.3 : cdi     : (Contexts and Dependency Injection) cho việc quản lý và tạo mapper instance trong môi trường Java EE
+	
+	4.b.UserMapper INSTANCE = Mappers.getMapper(UserMapper.class); -- Giải thích tạo ra instance singleton (chung vùng nhớ.)
+================================================================================================================
+5. mvn clean install -DskipTests.
+(xóa , cài,  bỏ qua test. ).
+
+================================================================================================================
+6.Trong service tạo ra xài. 
